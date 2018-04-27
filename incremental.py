@@ -47,9 +47,16 @@ for attempt in range(10000):
     table[1][curr_action[1]] += 1 #update number of times called
     #The new q value equation is:
     # Qn+1 = Qn + 1/n[Rn - Qn]
+    # OR
+    # Qn+1 = Qn + a[Rn - Qn]
+    # ^ If using a fixed n timestep ratio
     old_q = table[2][curr_action[1]]  #Helper for indexing
+    #First equation
     table[2][curr_action[1]] = old_q + (1/table[1][curr_action[1]]) * \
         (curr_reward - old_q) #Update the q value for this action
+    #Second equation
+    #table[2][curr_action[1]] = old_q + (1/table[1][curr_action[1]]) * \
+        #(curr_reward - old_q) #Update the q value for this action
 
     #Update total reward
     total_reward += curr_reward
